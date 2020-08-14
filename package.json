@@ -2,9 +2,9 @@
   "name": "alexa-bot-api",
   "version": "0.1.2",
   "description": "A very lightweight and simple artificial intelligence",
-  "main": "src/server.js",
+  "main": "src/ai.js",
   "scripts": {
-    "start": "node src/server.js"
+    "start": "node src/ai.js"
   },
   "dependencies": {
     "superagent": "^5.2.2",
