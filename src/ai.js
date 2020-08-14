@@ -25,14 +25,12 @@ module.exports = async (stimulus, context = []) => {
         payload += `vText${i + 2}=${escape(reverseContext[i]).includes("%u") ? escape(escape(reverseContext[i]).replace(/%u/g, "|")) : escape(reverseContext[i])}&`;
     }
 
-    payload += "cb_settings_scripting=no&islearning=1&icognoid=wsf&icognocheck=";
-
-    payload += md5(payload.substring(7, 33));
+    payload += `cb_settings_scripting=no&islearning=1&icognoid=wsf&icognocheck=${md5(payload.substring(7, 33))}`
 
     const req = await superagent.post("https://www.cleverbot.com/webservicemin?uc=UseOfficialCleverbotAPI")
     .set("Cookie", cookies)
     .type("text/plain")
     .send(payload);
 
-    return decodeURIComponent(req.header["cboutput"]);
+    return decodeURIComponent(req.header.cboutput);
 };
